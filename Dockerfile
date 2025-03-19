@@ -16,7 +16,7 @@ RUN dotnet restore
 
 # Copy all files and build the project
 COPY . .
-RUN dotnet publish PortfolioBackend.csproj -c Release --no-self-contained -o /app/publish
+RUN dotnet publish PortfolioBackend.csproj -c Release --no-self-contained --output /app/publish
 
 # Final runtime image
 FROM base AS final
