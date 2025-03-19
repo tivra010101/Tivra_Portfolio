@@ -1,0 +1,13 @@
+# Ignore Visual Studio temporary files
+.vs/
+*.vsidx
+*.vscode
+*.db
+*.suo
+*.user
+*.cache
+*.pdb
+
+# Ignore build outputs
+bin/
+obj/

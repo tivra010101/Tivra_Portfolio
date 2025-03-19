@@ -41,3 +41,4 @@ C:\Users\TivraChauhan\source\repos\PortfolioBackend\PortfolioBackend\obj\Debug\n
 C:\Users\TivraChauhan\source\repos\PortfolioBackend\PortfolioBackend\obj\Debug\net8.0\PortfolioBackend.pdb
 C:\Users\TivraChauhan\source\repos\PortfolioBackend\PortfolioBackend\obj\Debug\net8.0\PortfolioBackend.genruntimeconfig.cache
 C:\Users\TivraChauhan\source\repos\PortfolioBackend\PortfolioBackend\obj\Debug\net8.0\ref\PortfolioBackend.dll
+C:\Users\TivraChauhan\source\repos\PortfolioBackend\PortfolioBackend\obj\Debug\net8.0\PortfolioBackend.sourcelink.json
