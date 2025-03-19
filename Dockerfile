@@ -14,8 +14,9 @@ WORKDIR "/src/PortfolioBackend"
 # Restore dependencies
 RUN dotnet restore
 
-# Copy all files and build the project
+# Copy all files and ensure a clean build
 COPY . .
+RUN rm -rf /src/PortfolioBackend/bin /src/PortfolioBackend/obj 
 RUN dotnet publish PortfolioBackend.csproj -c Release --no-self-contained --output /out
 
 # Final runtime image
