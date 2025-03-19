@@ -6,8 +6,10 @@ EXPOSE 10000
 # Use the .NET 8 SDK to build the app
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["PortfolioBackend.csproj", "./"]
-RUN dotnet restore "./PortfolioBackend.csproj"
+COPY ["PortfolioBackend/PortfolioBackend.csproj", "PortfolioBackend/"]
+WORKDIR "/src/PortfolioBackend"
+RUN dotnet restore
+
 COPY . .
 RUN dotnet publish -c Release -o /app/publish
 
