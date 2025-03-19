@@ -1,4 +1,4 @@
-# Use official .NET 8 runtime as base image
+# Use the official .NET 8 runtime as base image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
 EXPOSE 10000
@@ -7,14 +7,16 @@ EXPOSE 10000
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copy and restore the project
+# Copy only the project file
 COPY ["PortfolioBackend/PortfolioBackend.csproj", "PortfolioBackend/"]
 WORKDIR "/src/PortfolioBackend"
+
+# Restore dependencies
 RUN dotnet restore
 
-# Copy the rest of the application
+# Copy all files and build the project
 COPY . .
-RUN dotnet publish -c Release --no-self-contained -o /app/publish
+RUN dotnet publish PortfolioBackend.csproj -c Release --no-self-contained -o /app/publish
 
 # Final runtime image
 FROM base AS final
