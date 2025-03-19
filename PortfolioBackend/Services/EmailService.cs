@@ -28,13 +28,13 @@ namespace PortfolioBackend.Services
 
                 var mailMessage = new MailMessage
                 {
-                    From = new MailAddress(_configuration["EmailSettings:SenderEmail"]),
-                    Subject = contactForm.Subject,
+                    From = new MailAddress(_configuration["EmailSettings:SenderEmail"] ?? "default@email.com"),
+                    Subject = contactForm.Subject ?? "No Subject",
                     Body = $"<h3>New Contact Form Submission</h3>" +
-                           $"<p><b>Name:</b> {contactForm.FullName}</p>" +
-                           $"<p><b>Email:</b> {contactForm.Email}</p>" +
-                           $"<p><b>Phone:</b> {contactForm.PhoneNumber}</p>" +
-                           $"<p><b>Message:</b><br>{contactForm.Message}</p>",
+                           $"<p><b>Name:</b> {(contactForm.FullName ?? "Unknown")}</p>" +
+                           $"<p><b>Email:</b> {(contactForm.Email ?? "No Email Provided")}</p>" +
+                           $"<p><b>Phone:</b> {(contactForm.PhoneNumber ?? "No Phone Provided")}</p>" +
+                           $"<p><b>Message:</b><br>{(contactForm.Message ?? "No Message")}</p>",
                     IsBodyHtml = true
                 };
 
