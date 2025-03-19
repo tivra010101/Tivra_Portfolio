@@ -1,33 +1,3 @@
-## Use the official .NET 8 runtime as base image
-#FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-#WORKDIR /app
-#EXPOSE 10000
-#
-## Use the .NET 8 SDK to build the app
-#FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-#WORKDIR /app/build
-#
-## Copy only the project file
-#COPY ["PortfolioBackend/PortfolioBackend.csproj", "PortfolioBackend/"]
-#WORKDIR "/app/build/PortfolioBackend"
-#
-## Restore dependencies
-#RUN dotnet restore
-#
-## Copy all files and ensure a clean build
-#COPY . .
-#RUN chmod -R 777 /app/build   
-#RUN rm -rf /app/build/bin /app/build/obj  
-#RUN dotnet publish PortfolioBackend.csproj -c Release --no-self-contained --output /app/out  
-#
-## Final runtime image
-#FROM base AS final
-#WORKDIR /app
-#COPY --from=build /app/out .
-#ENTRYPOINT ["dotnet", "PortfolioBackend.dll"]
-
-
-
 # Use the official .NET 8 runtime as base image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
@@ -35,29 +5,23 @@ EXPOSE 10000
 
 # Use the .NET 8 SDK to build the app
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /src
+WORKDIR /app/build
 
 # Copy only the project file
 COPY ["PortfolioBackend/PortfolioBackend.csproj", "PortfolioBackend/"]
-WORKDIR "/src/PortfolioBackend"
+WORKDIR "/app/build/PortfolioBackend"
 
 # Restore dependencies
 RUN dotnet restore
 
-# Copy all files
+# Copy all files and ensure a clean build
 COPY . .
-
-# Clean up bin and obj directories
-RUN rm -rf bin obj
-
-# Debug: List files to check permissions
-RUN ls -l /src
-
-# Publish the application with verbose logging
-RUN dotnet publish PortfolioBackend.csproj -c Release --no-self-contained --output /app/publish -v detailed
+RUN chmod -R 777 /app/build   
+RUN rm -rf /app/build/bin /app/build/obj  
+RUN dotnet publish PortfolioBackend.csproj -c Release --no-self-contained --output /app/out  
 
 # Final runtime image
 FROM base AS final
 WORKDIR /app
-COPY --from=build /app/publish .
+COPY --from=build /app/out .
 ENTRYPOINT ["dotnet", "PortfolioBackend.dll"]
