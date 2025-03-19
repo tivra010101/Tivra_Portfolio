@@ -1,5 +1,0 @@
-C:\Users\TivraChauhan\source\repos\PortfolioBackend\PortfolioBackend\obj\Release\net8.0\PortfolioBackend.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\TivraChauhan\source\repos\PortfolioBackend\PortfolioBackend\obj\Release\net8.0\PortfolioBackend.AssemblyInfoInputs.cache
-C:\Users\TivraChauhan\source\repos\PortfolioBackend\PortfolioBackend\obj\Release\net8.0\PortfolioBackend.AssemblyInfo.cs
-C:\Users\TivraChauhan\source\repos\PortfolioBackend\PortfolioBackend\obj\Release\net8.0\PortfolioBackend.csproj.CoreCompileInputs.cache
-C:\Users\TivraChauhan\source\repos\PortfolioBackend\PortfolioBackend\obj\Release\net8.0\PortfolioBackend.MvcApplicationPartsAssemblyInfo.cache
