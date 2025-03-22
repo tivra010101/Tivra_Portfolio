@@ -46,11 +46,15 @@ RUN dotnet restore
 # Copy all files and ensure a clean build
 COPY . .
 
-RUN rm -rf bin obj
-RUN mkdir -p bin obj
-RUN chmod -R 777 bin obj  
+# FIX: Ensure correct permissions for all directories before build
+RUN chmod -R 777 /app/build
+RUN chmod -R 777 /app/build/bin
+RUN chmod -R 777 /app/build/obj
 
+# FIX: Remove & recreate apphost file to prevent permission issues
 RUN find /app/build/PortfolioBackend/obj -name "apphost" -delete
+
+# Build the project
 RUN dotnet publish PortfolioBackend.csproj -c Release --no-self-contained --output /app/out
 
 # Final runtime image
